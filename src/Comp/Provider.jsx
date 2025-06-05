@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 export const AuthProvider = createContext(null);
 const Provider = ({children}) => {
-    const [user,setUser] = useState(null);
+    const [user,setUser] = useState({});
     const parcel = {
         user,
         setUser,

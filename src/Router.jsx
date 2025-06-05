@@ -5,11 +5,12 @@ import Login from "./Comp/Login";
 import Drawer from "./Comp/Drawer";
 import ListUsers from "./Comp/ListUsers";
 import CreateEvent from "./Comp/CreateEvent";
+import Private from "./Comp/Private";
 
 const Router = createBrowserRouter([
   {
     path: "/",
-    element: <Drawer></Drawer>,
+    element: <Private><Drawer></Drawer></Private>,
     // errorElement:<Error></Error>,
     children: [
       //   {

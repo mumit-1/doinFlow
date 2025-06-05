@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthProvider } from './Provider';
 
 const CreateEvent = () => {
-    const handleSubmit = (e)=>{
-        e.preventDefault();
-        const form = e.target;
+    const {user} = useContext(AuthProvider);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  const form = e.target;
 
-          const title = form.title.value;
-          const description = form.description.value;
+  const title = form.title.value;
+  const description = form.description.value;
   const category = form.category.value;
   const communityId = form.communityId.value;
   const eventTime = new Date(form.eventTime.value).toISOString(); // Convert to ISO string
@@ -26,16 +28,39 @@ const CreateEvent = () => {
     ticketPrice,
     seatCount,
     type,
-    needVolunteer
+    needVolunteer,
   };
 
-  console.log(eventData);
-    }
+  
+    fetch("https://doingflow.vercel.app/api/events", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${user?.token || token1}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(eventData),
+    })
+    .then(res=>res.json())
+    .then(data=>console.log(data))
+
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+
+//     const result = await response.json();
+//     console.log("Event created successfully:", result);
+//     alert("Event created successfully!");
+//     form.reset(); // Optional: Reset the form
+//   } catch (error) {
+//     console.error("Error submitting the form:", error);
+//     alert("Failed to create event.");
+//   }
+}
     return (
         <div>
             <form onSubmit={handleSubmit} className="fieldset bg-base-200 border-base-300 rounded-box w-full  border p-4">
           <legend className="fieldset-legend text-lg font-bold">Event Details</legend>
-  <div className='flex gap-5'>
+  <div className='lg:flex md:flex gap-5'>
       <div className='space-y-2'>
           <label className="label">Title</label>
           <input type="text" className="input input-bordered w-full" placeholder="Event Title" name="title" />
@@ -45,10 +70,10 @@ const CreateEvent = () => {
           <input type="text" className="input input-bordered w-full" placeholder="Category" name="category" />
           <label className="label">Community ID</label>
           <input type="text" className="input input-bordered w-full" placeholder="Community ID" name="communityId" />
-          <label className="label">Event Time</label>
-          <input type="datetime-local" className="input input-bordered w-full" name="eventTime" />
       </div>
       <div  className='space-y-2'>
+          <label className="label">Event Time</label>
+          <input type="datetime-local" className="input input-bordered w-full" name="eventTime" />
       
           <label className="label">Is Ticketed?</label>
           <select className="select select-bordered w-full" name="isTicketed">
@@ -70,7 +95,7 @@ const CreateEvent = () => {
       </div>
   </div>
 
-  <label className="cursor-pointer label">
+  <label className="cursor-pointer label -mt-9">
     <span className="label-text">Need Volunteers?</span>
     <input type="checkbox" className="toggle" name="needVolunteer" />
   </label>

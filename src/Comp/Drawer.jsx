@@ -18,7 +18,7 @@ const Drawer = () => {
         <div className="p-4">
           <h2 className="text-xl font-bold mb-4">Menu</h2>
           <ul className="menu">
-            <li><Link to="/test">Test</Link></li>
+            <li><Link to="/test">Users</Link></li>
             <li><Link to="/createEvent">Create Event</Link></li>
             <li><a>Settings</a></li>
             <li><a>Profile</a></li>

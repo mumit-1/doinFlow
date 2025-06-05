@@ -12,23 +12,23 @@ const Login = () => {
     const email = e.target.email.value;
     const pass = e.target.pass.value;
     fetch('https://doingflow.vercel.app/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password: pass }),
-
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password: pass }),
     })
-    .then(res=>res.json())
-    .then(data=>{
+    .then(res => res.json())
+    .then(data => {
         setUser(data);
-        console.log(user);
-        if(user && user?.token){
-          
-          navigate("/");
+        if(data?.token){
+            navigate("/");
         }
     })
-  };
+    .catch(error => {
+        console.error('Login error:', error);
+    });
+};
 
   return (
     <div>
