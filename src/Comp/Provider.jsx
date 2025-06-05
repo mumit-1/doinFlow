@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 export const AuthProvider = createContext(null);
-const Provider = () => {
+const Provider = ({children}) => {
     const [user,setUser] = useState(null);
     const parcel = {
         user,
@@ -8,7 +8,7 @@ const Provider = () => {
     }
     return (
         <AuthProvider.Provider value={parcel}>
-            
+            {children}
         </AuthProvider.Provider>
     );
 };

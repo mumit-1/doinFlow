@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { AuthProvider } from "./Provider";
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
     const {user,setUser} = useContext(AuthProvider);
-
+   const navigate = useNavigate();
+   
   const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -20,6 +22,11 @@ const Login = () => {
     .then(res=>res.json())
     .then(data=>{
         setUser(data);
+        console.log(user);
+        if(user && user?.token){
+          
+          navigate("/");
+        }
     })
   };
 

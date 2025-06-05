@@ -3,32 +3,33 @@ import Root from "./Comp/Root";
 // import HomeLayout from "./Comp/HomeLayout";
 import Login from "./Comp/Login";
 import Drawer from "./Comp/Drawer";
-import Test from "./Comp/Test";
+import ListUsers from "./Comp/ListUsers";
+import CreateEvent from "./Comp/CreateEvent";
 
 const Router = createBrowserRouter([
-
   {
     path: "/",
     element: <Drawer></Drawer>,
     // errorElement:<Error></Error>,
     children: [
-    //   {
-    //     path: "/",
-    //     element: <HomeLayout></HomeLayout>,
-    
-    //   },
+      //   {
+      //     path: "/",
+      //     element: <HomeLayout></HomeLayout>,
+
+      //   },
       {
         path: "/test",
-        element: <Test></Test>,
-    
+        element: <ListUsers></ListUsers>,
       },
-      
+      {
+        path: "/createEvent",
+        element: <CreateEvent></CreateEvent>,
+      },
     ],
   },
   {
     path: "/login",
     element: <Login></Login>,
- 
   },
 ]);
 

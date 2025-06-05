@@ -6,7 +6,7 @@ const Drawer = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen manrope">
       {/* Mobile overlay sidebar */}
       <div className={`fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden transition-opacity ${isOpen ? "block" : "hidden"}`} onClick={() => setIsOpen(false)}></div>
 
@@ -19,6 +19,7 @@ const Drawer = () => {
           <h2 className="text-xl font-bold mb-4">Menu</h2>
           <ul className="menu">
             <li><Link to="/test">Test</Link></li>
+            <li><Link to="/createEvent">Create Event</Link></li>
             <li><a>Settings</a></li>
             <li><a>Profile</a></li>
             <li><a>Logout</a></li>
