@@ -31,13 +31,13 @@ const ListUsers = () => {
   }, [user?.token]);
 
   return (
-    <div className="overflow-x-auto p-4">
+    <div className="overflow-x-auto h-screen">
       <h2 className="text-2xl font-semibold mb-4">User List</h2>
-
-<div className="overflow-x-auto lg:w-full md:w-full w-80 mx-auto">
+<p className='text-sm opacity-70 mb-4 lg:w-3/5 md:w-4/5 '>This page displays a list of all registered users, including their names, emails, roles, and contact information.</p>
+<div className="overflow-x-auto lg:w-full md:w-full custom-sm:w-[500px] custom-sm-a:w-96  w-[380px] border-2 border-[#5C8374] rounded-xl">
   <table className="table table-xs table-pin-rows table-pin-cols">
-    <thead className="bg-base-200">
-      <tr>
+    <thead className="">
+      <tr className=''>
         <th className="w-10">#</th>
         <th>Name</th>
         <th>Email</th>
@@ -47,8 +47,8 @@ const ListUsers = () => {
     </thead>
     <tbody>
       {listUser.map((info, idx) => (
-        <tr key={info._id || idx} className="hover:bg-base-200/50">
-          <th>{idx + 1}</th>
+        <tr key={info._id || idx} className="">
+          <th className='bg-transparent'>{idx + 1}</th>
           <td className="font-medium">
             {info.firstName} {info.lastName}
           </td>
@@ -62,7 +62,7 @@ const ListUsers = () => {
         </tr>
       ))}
     </tbody>
-    <tfoot className="bg-base-200">
+    <tfoot className="">
       <tr>
         <th>#</th>
         <th>Name</th>

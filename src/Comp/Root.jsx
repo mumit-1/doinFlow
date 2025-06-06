@@ -5,7 +5,7 @@ import Test from "./ListUsers";
 
 const Root = () => {
   return (
-    <div>
+    <div className="">
       <Outlet></Outlet>
     </div>
   );

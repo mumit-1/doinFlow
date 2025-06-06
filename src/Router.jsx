@@ -6,6 +6,9 @@ import Drawer from "./Comp/Drawer";
 import ListUsers from "./Comp/ListUsers";
 import CreateEvent from "./Comp/CreateEvent";
 import Private from "./Comp/Private";
+import Test from "./Comp/Test";
+import ListEvents from "./Comp/ListEvents";
+import Welcome from "./Comp/Welcome";
 
 const Router = createBrowserRouter([
   {
@@ -13,18 +16,28 @@ const Router = createBrowserRouter([
     element: <Private><Drawer></Drawer></Private>,
     // errorElement:<Error></Error>,
     children: [
-      //   {
-      //     path: "/",
-      //     element: <HomeLayout></HomeLayout>,
+        {
+          path: "/",
+          element: <Welcome></Welcome>,
 
-      //   },
+        },
       {
-        path: "/test",
+        path: "/users",
         element: <ListUsers></ListUsers>,
       },
       {
         path: "/createEvent",
         element: <CreateEvent></CreateEvent>,
+      },
+      {
+        path: "/test",
+        element: <Test></Test>,
+
+      },
+      {
+        path: "/events",
+        element: <ListEvents></ListEvents>,
+
       },
     ],
   },
