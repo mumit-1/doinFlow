@@ -1,15 +1,17 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthProvider } from './Provider';
 
 const ListEvents = () => {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true); // <-- Loading state
   const { user } = useContext(AuthProvider);
   const token1 = "your-token-here";
 
   useEffect(() => {
     const token = user?.token || token1;
     if (!token) return;
+
+    setLoading(true); // Start loading
 
     fetch("https://doingflow.vercel.app/api/events", {
       method: "GET",
@@ -24,12 +26,20 @@ const ListEvents = () => {
       })
       .then(data => {
         setEvents(data.events || []);
-        console.log(data.events);
       })
       .catch(error => {
         console.error("Error fetching events:", error);
-      });
+      })
+      .finally(() => setLoading(false)); // Stop loading
   }, [user?.token]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen text-xl font-medium">
+        Loading events...
+      </div>
+    );
+  }
 
   return (
     <div className="overflow-x-auto h-screen">
@@ -51,11 +61,11 @@ const ListEvents = () => {
               <th>Created By</th>
             </tr>
           </thead>
-          <tbody className=''>
+          <tbody>
             {events.map((event, idx) => (
               <tr key={event._id || idx} className="hover:bg-base-200/60 transition-all duration-200 rounded-md">
-                <th className=''>{idx + 1}</th>
-                <td >{event.title}</td>
+                <th>{idx + 1}</th>
+                <td>{event.title}</td>
                 <td>{event.description}</td>
                 <td>{new Date(event.eventTime).toLocaleString()}</td>
                 <td>

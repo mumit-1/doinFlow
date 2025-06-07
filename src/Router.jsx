@@ -9,6 +9,7 @@ import Private from "./Comp/Private";
 import Test from "./Comp/Test";
 import ListEvents from "./Comp/ListEvents";
 import Welcome from "./Comp/Welcome";
+import Analytics from "./Comp/Analytics";
 
 const Router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const Router = createBrowserRouter([
       {
         path: "/events",
         element: <ListEvents></ListEvents>,
+
+      },
+      {
+        path: "/analytics",
+        element: <Analytics></Analytics>,
 
       },
     ],

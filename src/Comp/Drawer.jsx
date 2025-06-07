@@ -48,24 +48,24 @@ const currentPath = location.pathname;
       Events
     </Link>
   </li>
-  {/* <li>
-    <Link 
-      to="/profile" 
-  className={`rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500
-    ${currentPath === "/profile" ? "bg-[#232D3F]" : "bg-transparent hover:bg-[#1a202c]"}`}
-    >
-      Profile
-    </Link>
-  </li>
-  <li>
-    <Link 
-      to="/test" 
-  className={`rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500
-    ${currentPath === "/test" ? "bg-[#232D3F]" : "bg-transparent hover:bg-[#1a202c]"}`}
-    >
-      Test
-    </Link>
-  </li> */}
+    <li>
+      <Link 
+        to="/analytics" 
+    className={`rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500
+      ${currentPath === "/profile" ? "bg-[#232D3F]" : "bg-transparent hover:bg-[#1a202c]"}`}
+      >
+        Analytics
+      </Link>
+    </li>
+    <li>
+      <Link 
+        to="/test" 
+    className={`rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500
+      ${currentPath === "/test" ? "bg-[#232D3F]" : "bg-transparent hover:bg-[#1a202c]"}`}
+      >
+        Test
+      </Link>
+    </li>
 </ul>
 
         </div>
