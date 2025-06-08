@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthProvider } from './Provider';
+import Loading from './Loading';
 
 const ListUsers = () => {
   const [listUser, setListUser] = useState([]);
@@ -35,9 +36,7 @@ const ListUsers = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen text-xl font-medium">
-        Loading users...
-      </div>
+     <Loading></Loading>
     );
   }
 

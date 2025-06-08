@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthProvider } from './Provider'; // Adjust path as needed
+import Loading from './Loading';
 
 const Analytics = () => {
   const [stats, setStats] = useState(null);
@@ -25,7 +26,7 @@ const Analytics = () => {
       .catch(err => console.error("Error fetching stats:", err));
   }, [user?.token]);
 
-  if (!stats) return <div className="p-4 h-screen">Loading stats...</div>;
+  if (!stats) return <Loading></Loading>;
 
   const {
     activeEvents,
