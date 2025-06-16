@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthProvider } from './Provider';
 import Loading from './Loading';
+import { Link } from 'react-router-dom';
 
 const ListEvents = () => {
   const [events, setEvents] = useState([]);
@@ -39,7 +40,7 @@ const ListEvents = () => {
       <Loading></Loading>
     );
   }
-
+  console.log(events);
   return (
     <div className="overflow-x-auto h-screen">
       <h1 className="text-2xl font-semibold mb-4">Event List</h1>
@@ -58,6 +59,7 @@ const ListEvents = () => {
               <th>Price</th>
               <th>Type</th>
               <th>Created By</th>
+              <th>View</th>
             </tr>
           </thead>
           <tbody>
@@ -87,6 +89,9 @@ const ListEvents = () => {
                 <td className="text-xs text-base-content/70">
                   {event.createdByType || 'N/A'}
                 </td>
+                <td>
+                  <Link className='btn' to={`/events/${event._id} `}>View</Link>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -102,6 +107,7 @@ const ListEvents = () => {
               <th>Price</th>
               <th>Type</th>
               <th>Created By</th>
+              <th>View</th>
             </tr>
           </tfoot>
         </table>

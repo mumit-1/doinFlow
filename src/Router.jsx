@@ -10,6 +10,9 @@ import Test from "./Comp/Test";
 import ListEvents from "./Comp/ListEvents";
 import Welcome from "./Comp/Welcome";
 import Analytics from "./Comp/Analytics";
+import View from "./Comp/View";
+import { useContext } from "react";
+import { AuthProvider } from "./Comp/Provider";
 
 const Router = createBrowserRouter([
   {
@@ -38,6 +41,11 @@ const Router = createBrowserRouter([
       {
         path: "/events",
         element: <ListEvents></ListEvents>,
+
+      },
+      {
+        path: "/events/:_id",
+  element: <View></View>,
 
       },
       {

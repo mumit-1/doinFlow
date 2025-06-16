@@ -60,6 +60,7 @@ const Login = () => {
                   name='pass'
                   required
                 />
+                  aammojahid.1@gmail.com
                 <div>
                   <a className="link link-hover">Forgot password?</a>
                 </div>

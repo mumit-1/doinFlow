@@ -1,19 +1,23 @@
 import { useState } from "react";
 import Root from "./Root";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ImMenu } from "react-icons/im";
+
+
 
 const Drawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 const currentPath = location.pathname;
+const navigate = useNavigate();
+console.log(currentPath);
   return (
     <div className="flex  manrope bg-[#040D12]">
       {/* Mobile overlay sidebar */}
       <div className={`fixed inset-0 z-40  bg-opacity-50 lg:hidden transition-opacity ${isOpen ? "block" : "hidden"}`} onClick={() => setIsOpen(false)}></div>
 
      <aside
-  className={`fixed z-50 top-0 left-0 h-full w-64 bg-[#183D3D] shadow-lg transform transition-transform ${
+  className={`fixed z-50 top-0 left-0 h-full w-64 bg-[#183D3D] shadow-lg transform transition-transform duration-700 rounded-tr-2xl rounded-br-2xl ${
     isOpen ? "translate-x-0" : "lg:translate-x-0 -translate-x-full"
   }`}
 >
@@ -25,34 +29,53 @@ const currentPath = location.pathname;
     <Link 
       to="/users" 
        className={`rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500
-    ${currentPath === "/users" ? "bg-[#232D3F]" : "bg-transparent hover:bg-[#1a202c]"}`}
-    >
+    ${currentPath === "/users" ? "bg-[#1a212e]" : "bg-transparent hover:bg-[#1a202c]"}`}
+    > 
       Users
     </Link>
   </li>
-  <li>
+  <li className="w-52">
     <Link 
       to="/createEvent" 
    className={`rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500
-    ${currentPath === "/createEvent" ? "bg-[#232D3F]" : "bg-transparent hover:bg-[#1a202c]"}`}
+    ${currentPath === "/createEvent" ? "bg-[#1a212e]" : "bg-transparent hover:bg-[#1a202c]"} `}
     >
       Create Event
     </Link>
+    
   </li>
   <li>
-    <Link 
+     <details>
+ <summary
+ className="rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500 bg-transparent hover:bg-[#1a202c] "
+ >
+  Events
+      </summary>
+      
+    {/* <Link 
       to="/events" 
     className={`rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500
-    ${currentPath === "/event" ? "bg-[#232D3F]" : "bg-transparent hover:bg-[#1a202c]"}`}
+    ${currentPath === "/event" ? "bg-[#1a212e]" : "bg-transparent hover:bg-[#1a202c]"}`}
     >
       Events
-    </Link>
+    </Link> */}
+    <ul className="p-2">
+            <li className="">   <Link 
+      to="/events" 
+    className={`rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500
+    ${currentPath === "/events" ? "bg-[#1a212e]" : "bg-transparent hover:bg-[#1a202c]"} mr-7`}
+    >
+      Show Events
+    </Link></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+     </details>
   </li>
     <li>
       <Link 
         to="/analytics" 
     className={`rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500
-      ${currentPath === "/profile" ? "bg-[#232D3F]" : "bg-transparent hover:bg-[#1a202c]"}`}
+      ${currentPath === "/analytics" ? "bg-[#1a212e]" : "bg-transparent hover:bg-[#1a202c]"}`}
       >
         Analytics
       </Link>
@@ -61,7 +84,7 @@ const currentPath = location.pathname;
       <Link 
         to="/test" 
     className={`rounded-full pl-5 pr-5 py-2 font-bold text-white cursor-pointer transition-all duration-500
-      ${currentPath === "/test" ? "bg-[#232D3F]" : "bg-transparent hover:bg-[#1a202c]"}`}
+      ${currentPath === "/test" ? "bg-[#1a212e]" : "bg-transparent hover:bg-[#1a202c]"}`}
       >
         Test
       </Link>
