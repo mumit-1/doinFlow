@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthProvider } from './Provider';
 import Loading from './Loading';
-import { Link } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 const ListEvents = () => {
+  const navigate = useNavigate(); 
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true); // <-- Loading state
-  const { user } = useContext(AuthProvider);
+  const { user , id , setID } = useContext(AuthProvider);
   const token1 = "your-token-here";
 
   useEffect(() => {
@@ -40,7 +41,21 @@ const ListEvents = () => {
       <Loading></Loading>
     );
   }
-  console.log(events);
+  // const handleView = (num) =>{
+  //   setID(num);
+  //   // console.log(id);
+  //   navigate(`/events/${num}`);
+  // }
+//   useEffect(() => {
+//   if (id) {
+//     navigate(`/events/${id}`);
+//   }
+// }, [id]);
+const handleView = (num) => {
+  setID(num);
+  console.log(id);
+  navigate(`/events/${num}`);
+}
   return (
     <div className="overflow-x-auto h-screen">
       <h1 className="text-2xl font-semibold mb-4">Event List</h1>
@@ -90,7 +105,7 @@ const ListEvents = () => {
                   {event.createdByType || 'N/A'}
                 </td>
                 <td>
-                  <Link className='btn' to={`/events/${event._id} `}>View</Link>
+                  <button className='btn' onClick={()=>handleView(event._id)}>View</button>
                 </td>
               </tr>
             ))}
